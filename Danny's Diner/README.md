@@ -5,7 +5,9 @@ You can view the case [here](https://8weeksqlchallenge.com/case-study-1/).
 
 ## Introduction
 
-Danny seriously loves Japanese food so in the beginning of 2021, he decides to embark upon a risky venture and opens up a cute little restaurant that sells his 3 favourite foods: sushi, curry and ramen. Danny’s Diner is in need of your assistance to help the restaurant stay afloat — the restaurant has captured some very basic data from their few months of operation but have no idea how to use their data to help them run the business.
+Danny seriously loves Japanese food so in the beginning of 2021, he decides to embark upon a risky venture and opens up a cute little restaurant that sells his favourite foods: sushi, curry and ramen. 
+
+Danny’s Diner is in need of your assistance to help the restaurant stay afloat — the restaurant has captured some very basic data from their few months of operation but have no idea how to use their data to help them run the business.
 
 
 ## Problem Statement
@@ -20,3 +22,7 @@ The data set contains the following 3 tables which you may refer to the relation
 - sales
 - members
 - menu
+
+## Table Relationship
+
+![ERD](https://user-images.githubusercontent.com/102918064/203030963-b4ed68a0-cd40-4242-8e01-9aa948073868.jpg)
