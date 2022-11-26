@@ -27,3 +27,33 @@ ORDER BY 2 DESC
 Result:
 
 ![Screenshot (218)](https://user-images.githubusercontent.com/102918064/204088278-b32c6f3c-2fed-4dd4-8a30-2b51edcf59a0.png)
+---
+2. How many days has each customer visited the restaurant?
+``` sql
+
+SELECT customer_id,COUNT(DISTINCT(order_date)) AS visited_days
+FROM sales
+GROUP BY 1
+```
+Result:
+
+![Screenshot (210)](https://user-images.githubusercontent.com/102918064/204088686-66961334-7f88-4709-ac75-2fb360e38743.png)
+---
+3. What was the first item from the menu purchased by each customer?
+``` sql
+WITH order_info AS (
+SELECT customer_id, order_date,product_name,
+	DENSE_RANK() OVER (PARTITION BY sales.customer_id ORDER BY order_date) AS item_rank
+FROM sales
+JOIN menu
+ON sales.product_id = menu.product_id
+)
+
+SELECT customer_id, product_name
+FROM order_info
+WHERE item_rank=1
+GROUP BY 1,2
+```
+Result:
+
+![Screenshot (211)](https://user-images.githubusercontent.com/102918064/204088723-5dcdbf19-3fbb-43d9-83cd-6c504317d136.png)
