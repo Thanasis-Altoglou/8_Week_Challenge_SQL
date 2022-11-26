@@ -17,6 +17,12 @@
 1. What is the total amount each customer spent at the restaurant?
 
 ``` sql
-
+SELECT customer_id, SUM(price) AS total_amount
+FROM sales
+INNER JOIN menu
+ON sales.product_id = menu.product_id
+GROUP BY 1
+ORDER BY 2 DESC
 ```
 Result:
+![Screenshot (210)](https://user-images.githubusercontent.com/102918064/204088133-8eaa63d5-9c52-444b-afc4-94a2e70896ae.png)
