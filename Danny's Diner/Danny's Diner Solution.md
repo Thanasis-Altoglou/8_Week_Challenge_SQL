@@ -25,4 +25,5 @@ GROUP BY 1
 ORDER BY 2 DESC
 ```
 Result:
-![Screenshot (210)](https://user-images.githubusercontent.com/102918064/204088133-8eaa63d5-9c52-444b-afc4-94a2e70896ae.png)
+
+![Screenshot (218)](https://user-images.githubusercontent.com/102918064/204088278-b32c6f3c-2fed-4dd4-8a30-2b51edcf59a0.png)
