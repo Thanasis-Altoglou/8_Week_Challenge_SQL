@@ -73,25 +73,25 @@ Result:
 ---
 ### 5. Which item was the most popular for each customer?
 ``` sql
-WITH orders AS (
-SELECT product_name,
-	customer_id,
-	COUNT(product_name) as order_count,
-	RANK() OVER (PARTITION BY customer_id ORDER BY COUNT(product_name))
-	AS rank_id
-FROM menu
-INNER JOIN sales
-ON menu.product_id = sales.product_id
-GROUP BY customer_id,product_name
-)
-	
-SELECT product_name,customer_id,order_count
-FROM orders
-WHERE rank_id=1
+WITH order_info AS
+  (SELECT product_name,
+          customer_id,
+          count(product_name) AS order_count,
+          rank() over(PARTITION BY customer_id
+                      ORDER BY count(product_name) DESC) AS rank_num
+   FROM menu
+   INNER JOIN sales ON menu.product_id = sales.product_id
+   GROUP BY customer_id,
+            product_name)
+SELECT customer_id,
+       product_name,
+       order_count
+FROM order_info
+WHERE rank_num =1;
 ```
 Result: 
 
-![Screenshot (213)](https://user-images.githubusercontent.com/102918064/204088885-2851f9ad-5e15-442e-95cc-c15b02502386.png)
+![Screenshot (220)](https://user-images.githubusercontent.com/102918064/206169788-812e9cb2-0584-4aa4-ba61-748a67a11245.png)
 ---
 ### 6. Which item was purchased first by the customer after they became a member?
 ``` sql
